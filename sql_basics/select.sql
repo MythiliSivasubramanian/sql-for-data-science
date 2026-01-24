@@ -54,3 +54,18 @@ SELECT name, department, salary FROM employees WHERE salary > 40000 AND salary <
 
 -- 18. Top 3 highest salaries, show name, department, salary
 SELECT name, department, salary FROM employees ORDER BY salary DESC LIMIT 3;
+
+-- Day 3 Pratice on Aggregates
+-- Aggregates Practice (COUNT, GROUP BY)
+-- Date: 2026-01-23
+
+-- 19. Count IT employees with salary >= 55000
+SELECT COUNT(*) AS it_high_earners
+FROM employees
+WHERE department = 'IT'
+  AND salary >= 55000;
+
+-- 20. Count employees per department
+SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department;

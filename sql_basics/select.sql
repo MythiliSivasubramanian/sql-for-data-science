@@ -69,3 +69,73 @@ WHERE department = 'IT'
 SELECT department, COUNT(*) AS employee_count
 FROM employees
 GROUP BY department;
+
+-- Day 4 Pratice on SELECT , GROUP BY , HAVING
+-- Aggregates Practice (COUNT, SUM, AVG)
+-- Date: 2026-01-25
+
+-- 21. Count how many employees earn more than 50000
+SELECT COUNT(*) FROM employees WHERE salary > 50000;
+
+-- 22. Find the average salary of employees in the IT department.
+SELECT AVG(salary) FROM employees WHERE department = 'IT';
+
+-- 23. Count how many employees work in either HR or Finance.
+SELECT COUNT(*) FROM employees WHERE (department = 'HR' OR department = 'Finance');
+SELECT COUNT(*) FROM employees WHERE department IN ('HR','Finance');
+
+/* 
+24.Select name and salary of employees whose salary is between 45,000 and 65,000, 
+sorted by salary ascending.
+*/
+
+SELECT name,salary FROM employees WHERE (salary BETWEEN 45000 AND 65000) ORDER BY salary;
+
+/*
+25. Show the total salary (SUM) paid to employees in the Sales department 
+who earn more than 40,000.
+*/
+SELECT SUM(salary) FROM employees WHERE (salary > 40000 AND department = 'sales');
+
+-- 26. Count how many employees are in each department.
+SELECT department, COUNT(*) FROM employees GROUP BY department; 
+
+/*
+27. Find departments where the average salary is greater than 55,000. 
+Show department and average salary.
+*/
+SELECT department, AVG(salary) FROM employees GROUP BY department HAVING AVG(salary) > 55000;
+
+-- 28. Find the top 2 departments with the most employees.
+SELECT department,COUNT(name) as Emp_count 
+FROM employees 
+GROUP BY department 
+ORDER BY EMP_count 
+LIMIT 2;
+
+-- 29. Find the average salary for each department.
+SELECT department, AVG(salary) FROM employees GROUP BY department;
+
+
+/*
+30. Show only the departments where the total salary (SUM) is greater than 110000.
+Show: department and total salary
+*/
+SELECT department,SUM(salary) AS total_salary FROM employees GROUP BY department HAVING SUM(salary) > 110000;
+
+/*
+31. Find the average salary per department, but only for employees earning more than 52,000.
+Show: department and average salary
+*/
+SELECT department, AVG(salary) FROM employees WHERE salary > 52000 GROUP BY department;
+
+/*
+32. Show departments where the average salary is greater than 55,000,
+but only considering employees who earn more than 50,000.
+Show: department and average salary
+*/
+SELECT department, AVG(salary) 
+FROM employees 
+WHERE salary > 50000 
+GROUP BY department 
+HAVING AVG(salary) > 55000;

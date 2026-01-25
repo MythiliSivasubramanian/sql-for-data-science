@@ -1,0 +1,15 @@
+-- filtering_and_conditions/filter_exercises.sql
+/*
+Practicing filtering conditions on employees table. 
+Dataset is in Folder common_datasets with file name as sample_dataset.db
+*/
+
+
+-- 1: Employees with salary > 55000
+SELECT name, salary FROM employees WHERE salary > 55000;
+
+-- 2: Employees in IT or Finance
+SELECT name, department FROM employees WHERE department IN ('IT', 'Finance');
+
+-- 3: Employees whose name starts with 'A'
+SELECT name, department FROM employees WHERE name LIKE 'A%';

@@ -17,8 +17,6 @@ Every lesson has:
 
 ## Folder Structure
 
-## Folder Structure
-
 | Folder / File | Description |
 |---------------|-------------|
 | **01_sql_basics/** | Basics: How to read and query a single table |

@@ -4,8 +4,6 @@
 
 -- 1. Show employee name, department name, and salary
 -- Only include employees who have a valid department (so: INNER JOIN)
-SELECT * FROM employees_join;
-SELECT * FROM departments;
 SELECT e.name,
        d.department_name,
        e.salary
@@ -28,4 +26,113 @@ ON e.department_id = d.id;
 Show department name if exists. 
 Highlight IT employees in logic, but do NOT remove others
 */
+SELECT e.name,
+       d.department_name,
+       e.salary,
+CASE
+    WHEN d.department_name = 'IT' THEN 'Yes'
+    ELSE 'No'
+END AS is_it
+FROM employees_join e
+LEFT JOIN departments d
+ON e.department_id = d.id;
 
+/*
+4. Show only employees who belong to the IT department.
+Display employee name, department name, and salary.
+*/
+SELECT e.name, 
+       d.department_name,
+       e.salary
+FROM employees_join e
+INNER JOIN departments d    -- INNER JOIN is used as we need only valid specific department (IT)
+ON e.department_id = d.id
+WHERE d.department_name = 'IT';
+
+/*
+5. Show ALL employees who are earning more than 55,000.
+Show name, department_name, salary
+*/
+SELECT e.name,
+       d.department_name,
+       e.salary
+FROM employees_join e
+LEFT JOIN departments d
+ON e.department_id = d.id
+WHERE (e.salary > 55000);
+
+/*
+6. Show ALL employees:  Show name, department_name, salary
+Show only IT department name, but do NOT remove non-IT employees
+*/
+SELECT e.name,
+       d.department_name,
+       e.salary
+FROM employees_join e
+LEFT JOIN departments d
+ON e.department_id = d.id  
+AND d.department_name = 'IT'; -- LEFT JOIN with condition in ON clause
+/*
+ON e.department_id = d.id  
+AND d.department_name = 'IT'
+Only joins a department row when it is IT
+For HR/Finance employees, the join fails → d.department_name becomes NULL
+*/
+
+--  ----------------------------
+
+/*
+7. For each department, show: department name, number of employees and average salary
+Include departments even if they have zero employees
+*/
+SELECT d.department_name,
+       COUNT(e.id) AS Emp_count,
+       AVG(e.salary)
+FROM employees_join e
+RIGHT JOIN departments d     -- RIGHT JOIN is used since we want all departments even with 0 employees
+ON e.department_id = d.id
+GROUP BY d.department_name;
+
+-- 8. Show departments with exactly 1 employee
+SELECT d.department_name,
+       COUNT(e.id) AS Emp_count
+FROM employees_join e
+LEFT JOIN departments d
+ON e.department_id = d.id
+GROUP BY d.department_name
+HAVING COUNT(e.id) = 1;
+
+
+-- 9 Show departments where total salary ≥ 11000
+SELECT d.department_name,
+       COALESCE(SUM(e.salary), 0) AS total_salary
+       -- If a department has no employees, SUM(e.salary) becomes NULL.
+       -- With COALESCE(...,0) your logic stays numeric and predictable.
+FROM departments d
+LEFT JOIN employees_join e
+  ON e.department_id = d.id
+GROUP BY d.department_name
+HAVING COALESCE(SUM(e.salary), 0) >= 11000;
+
+
+-- 10. Show departments excluding Legal, but only if employee count > 1
+
+SELECT d.department_name,
+       COUNT(e.id) AS emp_count
+FROM departments d
+LEFT JOIN employees_join e
+  ON e.department_id = d.id
+WHERE d.department_name <> 'Legal'
+GROUP BY d.department_name
+HAVING COUNT(e.id) > 1;
+
+
+
+SELECT d.department_name,
+       COUNT(e.id) AS emp_count
+FROM departments d
+LEFT JOIN employees_join e
+  ON e.department_id = d.id
+GROUP BY d.department_name
+HAVING COUNT(e.id) > 1
+   AND d.department_name <> 'Legal';

@@ -24,7 +24,8 @@ DELETE FROM departments;
 INSERT INTO departments (id, department_name) VALUES
 (1, 'HR'),
 (2, 'IT'),
-(3, 'Finance');
+(3, 'Finance'),
+(4,'Legal');
 
 INSERT INTO employees_join (name, department_id, salary) VALUES
 ('Alice', 1, 50000),

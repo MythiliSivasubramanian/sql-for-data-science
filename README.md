@@ -19,13 +19,13 @@ Every lesson has:
 
 | Folder / File | Description |
 |---------------|-------------|
-| **01_sql_basics/** | Basics: How to read and query a single table |
-| **02_filtering_and_conditions/** | Filtering data using conditions |
-| **03_aggregations/** | Summarizing data |
-| **04_joins/** | Combining data from multiple tables |
-| **05_subqueries_and_cte/** | Writing advanced queries |
-| **06_window_functions/** | Advanced SQL used in data science |
-| **datasets/** | Sample databases for practice |
+| **01_sql_basics** | Basics: How to read and query a single table |
+| **02_filtering_and_conditions** | Filtering data using conditions |
+| **03_aggregations** | Summarizing data |
+| **04_joins** | Combining data from multiple tables |
+| **05_subqueries_and_cte** | Writing advanced queries |
+| **06_window_functions** | Advanced SQL used in data science |
+| **datasets** | Sample databases for practice |
 | **sample.db** | SQLite database used in exercises |
 
 It is a **learning repo**.

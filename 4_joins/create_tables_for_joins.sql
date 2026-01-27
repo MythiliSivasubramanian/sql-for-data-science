@@ -29,3 +29,4 @@ INSERT INTO employees_join (name, department_id, salary) VALUES
 ('David', 2, 62000),
 ('Eve', 1, 53000),
 ('Frank', 3, 58000);
+('Grace', 99, 54000);

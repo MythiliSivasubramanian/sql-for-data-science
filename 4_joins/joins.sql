@@ -136,3 +136,35 @@ LEFT JOIN employees_join e
 GROUP BY d.department_name
 HAVING COUNT(e.id) > 1
    AND d.department_name <> 'Legal';
+
+
+-- Day 2 pratice on joins
+
+-- 11. Show departments where: average salary > 60000 and employees earning < 30000 are ignored
+--include departments with zero employees
+
+SELECT d.department_name, 
+  AVG(CASE WHEN e.salary > 30000 THEN e.salary END) AS Avg_salary_of_emp_above_30000,
+  COUNT(e.id) AS Emp_count
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name
+HAVING AVG(CASE WHEN e.salary > 30000 THEN e.salary END) > 60000;
+
+
+-- 12. Departments with at least 2 employees AND at least 1 employee earning > 70000 
+
+SELECT * FROM employees_join;
+SELECT * FROM departments;
+SELECT d.department_name,
+       COUNT(e.id) AS emp_count,
+       SUM(CASE WHEN e.salary > 50000 THEN 1 ELSE 0 END) AS high_earners
+FROM departments d
+LEFT JOIN employees_join e
+  ON e.department_id = d.id
+GROUP BY d.department_name
+HAVING COUNT(e.id) >= 2
+   AND SUM(CASE WHEN e.salary > 50000 THEN 1 ELSE 0 END) >= 1;
+
+

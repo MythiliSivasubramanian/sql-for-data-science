@@ -167,4 +167,11 @@ GROUP BY d.department_name
 HAVING COUNT(e.id) >= 2
    AND SUM(CASE WHEN e.salary > 50000 THEN 1 ELSE 0 END) >= 1;
 
-
+-- 13. Show each department and the number of employees earning more than 50,000.
+--Include departments even if the count is zero.
+SELECT d.department_name,
+       SUM(CASE WHEN e.salary > 50000 THEN 1 ELSE 0 END) AS high_salary_emp_count
+FROM departments d
+LEFT JOIN employees_join e
+  ON e.department_id = d.id
+GROUP BY d.department_name;

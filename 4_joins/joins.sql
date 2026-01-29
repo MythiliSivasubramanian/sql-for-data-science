@@ -189,4 +189,18 @@ LEFT JOIN employees_join e
 ON e.department_id = d.id
 GROUP BY d.department_name;
 
+/*
+Show ALL departments where:
+Total salary of employees earning ≥ 60000 is ≥ 120000.
 
+-- Sum the salaries of employees whose salary ≥ 60000, per department,
+and keep only departments where that sum ≥ 120000.
+*/
+
+SELECT  d.department_name,
+        SUM(CASE WHEN e.salary >= 60000 THEN e.salary ELSE 0 END) AS Sum_salary_above_60000
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name
+HAVING SUM(CASE WHEN e.salary >= 60000 THEN e.salary ELSE 0 END) >= 120000;

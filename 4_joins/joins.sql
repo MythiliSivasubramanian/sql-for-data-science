@@ -175,3 +175,18 @@ FROM departments d
 LEFT JOIN employees_join e
   ON e.department_id = d.id
 GROUP BY d.department_name;
+
+/*
+14.  For each department, show: department_name, emp_count (total employees)
+it_emp_count (employees that belong to the IT department)
+*/
+
+SELECT d.department_name,
+       COUNT(e.id) AS Emp_count,
+       SUM(CASE WHEN d.id = 2 THEN 1 else 0 END )AS IT_emp_count
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name;
+
+

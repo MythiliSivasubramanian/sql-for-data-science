@@ -190,7 +190,7 @@ ON e.department_id = d.id
 GROUP BY d.department_name;
 
 /*
-Show ALL departments where:
+15. Show ALL departments where:
 Total salary of employees earning ≥ 60000 is ≥ 120000.
 
 -- Sum the salaries of employees whose salary ≥ 60000, per department,
@@ -204,3 +204,44 @@ LEFT JOIN employees_join e
 ON e.department_id = d.id
 GROUP BY d.department_name
 HAVING SUM(CASE WHEN e.salary >= 60000 THEN e.salary ELSE 0 END) >= 120000;
+
+/*
+16. Display ALL departments, and for each department show:
+department_name , the number of employees earning ≥ 50000
+Even if: a department has zero employees, or a department has employees but none earning ≥ 50000
+it should still appear, with the count shown as 0.
+*/
+
+SELECT d.department_name,
+       COUNT(CASE WHEN e.salary >= 50000 THEN 1 ELSE NULL END) AS Emp_count_salary_with_or_morethan_50000
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name;
+
+
+
+SELECT d.department_name,
+       SUM(CASE WHEN e.salary >= 50000 THEN 1 ELSE 0 END) AS Emp_count_salary_with_or_morethan_50000
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name;
+
+-- 17. Show all departments and the number of employees earning ≥ 60000.
+
+SELECT d.department_name,
+       SUM(CASE WHEN e.salary >= 60000 THEN 1 ELSE 0 END) AS Emp_count_salary_with_or_morethan_60000
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name;
+
+-- 18. Display ALL departments, and for each department, show: the total salary paid ONLY to employees who individually earn ≥ 60000
+
+SELECT d.department_name,
+    COALESCE(SUM(CASE WHEN e.salary >= 60000 THEN e.salary  END),0) AS Sum_salary_above_60000
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name;

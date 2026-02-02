@@ -245,3 +245,23 @@ FROM departments d
 LEFT JOIN employees_join e
 ON e.department_id = d.id
 GROUP BY d.department_name;
+
+--19 . Show ALL departments and the average salary of employees earning ≥ 55000.
+-- If no one qualifies in a department, show 0.
+
+SELECT d.department_name,
+COALESCE(AVG(CASE WHEN e.salary >= 55000 THEN e.salary END), 0) AS Avg_salary_of_emp_55000_and_above
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name;
+
+
+-- 20. Show ALL departments and the total salary paid to employees earning between 40,000 and 60,000 (inclusive).
+-- If no one qualifies in a department, show 0.
+SELECT d.department_name,
+COALESCE(SUM(CASE WHEN e.salary BETWEEN 40000 AND 60000 THEN e.salary END),0) AS Total_salary_of_emp_between_40000_and_60000
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name;

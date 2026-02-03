@@ -273,8 +273,7 @@ department_name
 total_employees
 high_earners
 */
-SELECT * FROM employees_join;
-SELECT * FROM departments;
+
 
 SELECT d.department_name,
 COUNT(e.id) AS total_employees,

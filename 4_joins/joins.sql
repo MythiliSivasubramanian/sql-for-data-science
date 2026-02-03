@@ -265,3 +265,22 @@ FROM departments d
 LEFT JOIN employees_join e
 ON e.department_id = d.id
 GROUP BY d.department_name;
+
+--21. Show departments that have at least 3 employees, and at least 2 of them earn ≥ 60000.
+/*
+Output:
+department_name
+total_employees
+high_earners
+*/
+SELECT * FROM employees_join;
+SELECT * FROM departments;
+
+SELECT d.department_name,
+COUNT(e.id) AS total_employees,
+SUM(CASE WHEN e.salary >= 60000 THEN 1 ELSE 0 END) AS high_earners
+FROM departments d
+LEFT JOIN employees_join e
+ON e.department_id = d.id
+GROUP BY d.department_name
+HAVING SUM(CASE WHEN e.salary >= 60000 THEN 1 ELSE 0 END) >= 2 AND COUNT(e.id) >= 3;

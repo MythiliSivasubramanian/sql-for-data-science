@@ -1,36 +1,33 @@
+# SQL for Data Science - From Basics
 
-# SQL for Data Science – From Basics
+This repository is my daily SQL learning tracker focused on Data Science use cases.
 
-This repo is my personal daily learning tracker in **SQL specially for Data Science**.
+I am learning step by step, from fundamentals to advanced SQL patterns used in analytics and data roles.
 
-I am starting from absolute basics and moving step by step towards advanced SQL used in real data science roles.
-
-Each phase contains small lessons.  
-
-Every lesson has:
-- SQL queries  
-- Clear comments  
-- Simple explanations  
-- Practice examples  
-
----
+Each lesson includes:
+- SQL queries
+- Clear comments
+- Simple explanations
+- Practice examples
 
 ## Folder Structure
 
-| Folder / File | Description |
-|---------------|-------------|
-| **01_sql_basics** | Basics: How to read and query a single table |
-| **02_filtering_and_conditions** | Filtering data using conditions |
-| **03_aggregations** | Summarizing data |
-| **04_joins** | Combining data from multiple tables |
-| **05_subqueries_and_cte** | Writing advanced queries |
-| **06_window_functions** | Advanced SQL used in data science |
-| **datasets** | Sample databases for practice |
-| **sample.db** | SQLite database used in exercises |
+| Folder | Description |
+|--------|-------------|
+| `1_sql_basics/` | Basics: querying a single table |
+| `2_filtering_and_conditions/` | Filtering records with conditions |
+| `3_aggregations/` | Summarizing and grouping data |
+| `4_joins/` | Combining data from multiple tables |
+| `5_subqueries_and_cte/` | Subqueries and common table expressions |
+| `6_window_functions/` | Window functions for analysis |
+| `common_datasets/` | Shared dataset files used for practice |
 
-It is a **learning repo**.
+## Notes
 
-Mistakes, improvements, and experiments are part of the journey.
+This is a learning repository.
 
-**Goal:  **
-Build a strong foundation in SQL and become confident using it for Data Science.
+Mistakes, improvements, and experiments are part of the process.
+
+## Goal
+
+Build a strong SQL foundation and become confident using SQL for Data Science.

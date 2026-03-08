@@ -18,8 +18,8 @@ Each lesson includes:
 | `2_filtering_and_conditions/` | Filtering records with conditions |
 | `3_aggregations/` | Summarizing and grouping data |
 | `4_joins/` | Combining data from multiple tables |
-| `5_subqueries_and_cte/` | Subqueries and common table expressions |
-| `6_window_functions/` | Window functions for analysis |
+| `05_subqueries_and_cte/` | Subqueries and common table expressions |
+| `06_window_functions/` | Window functions for analysis |
 | `common_datasets/` | Shared dataset files used for practice |
 
 ## Notes

@@ -68,3 +68,25 @@ SELECT * FROM employees ORDER BY salary DESC;
 -- 18. Show name and salary of employees from IT sorted by salary ascending
 SELECT name, salary FROM employees WHERE department = 'IT' ORDER BY salary ASC;
 
+/*
+19. Select employees who:
+Are from IT or Finance,
+Salary is greater than 55000,
+Name should not start with B
+*/
+SELECT name, department, salary 
+FROM employees 
+WHERE (department IN ('IT','Finance') AND salary > 55000 AND name NOT LIKE 'B%');
+
+/*
+20. Select employees who:
+Are not in HR,
+Salary is between 50000 and 65000,
+Name starts with A or C,
+Sort by salary descending
+*/
+SELECT name, department, salary 
+FROM employees 
+WHERE (department != 'HR' AND salary BETWEEN 50000 AND 65000) 
+AND (name LIKE 'A%' OR name LIKE 'C%') 
+ORDER BY salary DESC;
